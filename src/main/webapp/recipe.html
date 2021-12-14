@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menu Planning Service</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/datepicker.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/daterangepicker.css">
+    <link rel="stylesheet" href="assets/css/searchableDropdown.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+
+        .customDesign td, th {
+            padding: 1em;
+            border: 2px solid gray;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .customDesign td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .customDesign tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        .remove {
+            background-color: Red;
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+
+        }
+
+        /* Darker background on mouse-over */
+        .remove:hover {
+            background-color: Red;
+        }
+
+        .delete {
+            background-color: Red;
+            border: none;
+            color: white;
+            padding: 4px 4px;
+            font-size: 10px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+
+        /* Darker background on mouse-over */
+        .delete:hover {
+            background-color: Red;
+        }
+    </style>
+    <style>
+        #myTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #myTable td, #myTable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #myTable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #myTable tr:hover {
+            background-color: #ddd;
+        }
+
+        #myTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<header>
+    <div class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <div class="logo t-center">
+                        <a href="index.html"><img src="assets/images/logo/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <div class="user-welcome-part float-right d-flex">
+                        <p id="pUser">Hello, User</p>
+                        <form action="">
+                            <a href="#" onclick="logout()" class="btn btn-primary btn-sm">Log Out</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu"></div>
+</header>
+<!-- Header-Area-End
+    ================================= -->
+<main>
+    <div class="dashboard-area">
+        <div class="container-fluid" style="padding-left:0; padding-right:0;">
+            <div class="row no-gutters">
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                    <div class="dashboard-left-area">
+                        <div class="dashboard-nav">
+                            <div id="myDIV">
+                                <ul>
+                                    <li class="dbbtn dbactive">
+                                        <a href="menu.html"><i class="fa fa-bank"></i>
+                                            Menu</a>
+                                    </li>
+                                    <li class="dbbtn">
+                                        <a href="ingredient.html"><i class="fas fa-bank"></i>
+                                            Ingredients</a>
+                                    </li>
+
+                                    <li class="dbbtn ">
+                                        <a href="recipe.html"><i class="fa fa-shopping-cart"></i>
+                                            Recipe</a>
+                                    </li>
+
+                                    <li class="dbbtn">
+                                        <a href="manage-users.html"><i class="fas fa-user-tie"></i>
+                                            Manage Users</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--        <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">-->
+                <!--          <div class="right-side-dashboard-content">-->
+                <!--            <div class="dashboard-content">-->
+                <!--              <div class="single-dashboard-content">-->
+                <!--                <div class="query-cotent">-->
+                <div class="container">
+                    <div class="query-date-area">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 style="color: #000; margin-bottom: 20px; margin-top: 10px;">Recipe Info</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <!--Input Field Start from here-->
+
+                            <div class="container">
+                                <row>
+                                    <div class="col-md-12">
+                                        <div class="manage-user-popup-form">
+                                            <form action="" method="POST" id="form_date">
+                                                <input type="hidden" id="id">
+
+                                                <div class="form-group row">
+                                                    <label for="recipeName" class="col-sm-2 col-form-label">Menu
+                                                        Name</label>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-group">
+                                                            <select name="menuName" id="menuName" class="form-control"></select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <br>
+                                                <div class="form-group row">
+                                                    <label for="recipeName" class="col-sm-2 col-form-label">Recipe
+                                                        Name</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" name="recipeName"
+
+                                                               class="form-control" id="recipeName">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="recipeName"
+                                                           class="col-sm-2 col-form-label">Instruction</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" name="instruction"
+
+                                                               class="form-control" id="instruction">
+                                                    </div>
+                                                </div>
+                                                <div class="element" id="div_id1">
+                                                    <div class="border border-secondary">
+                                                        <br>
+                                                        <div class="form-group row">
+                                                            <input name="goodsId" type="hidden" id="goodsId">
+                                                            <label for="goodsDesc" class="col-sm-2 col-form-label">Ingredients</label>
+                                                            <div class="col-sm-3">
+                                                                <!--<input class="form-control" id="goodsDesc"-->
+                                                                       <!--name="goodsDesc"-->
+                                                                       <!--onchange="goodsDate(this.value,this.id)"/>-->
+                                                                <select id="ingredientName" class="form-control"></select>
+
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <button type="button"
+                                                                        class="add123" id="tableBtn">Add More
+                                                                </button>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-group row">
+                                                    <div class="border border-secondary" style="width: 100%">
+                                                        <table id="myTable" class="customDesign">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td style="display:none;">Serial No</td>
+                                                                <td>Ingredient</td>
+                                                                <td>Action</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-group row">
+                                                    <label for="ratings" class="col-sm-2 col-form-label">Ratings</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" name="ratings"
+
+                                                               class="form-control" id="ratings">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="comments" class="col-sm-2 col-form-label">Comments</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" name="comments"
+
+                                                               class="form-control" id="comments">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+
+                                                        <label for="chef" class="col-sm-2 col-form-label">Chef</label>
+                                                        <div class="col-sm-5">
+                                                            <input type="text" name="chef"
+
+                                                                   class="form-control" id="chef">
+                                                        </div>
+
+
+                                                </div>
+
+
+                                                <div id="mainBtn">
+                                                    <button type="button" class="btn btn-primary" value="createNew"
+                                                            onclick="saveRecipe(this.value);">Save
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
+                                                            onclick="refreshForm();">Refresh
+                                                    </button>
+                                                </div>
+                                                <div id="afterUpdateBtn">
+                                                    <button type="button" class="btn btn-primary" value="createNew"
+                                                            onclick="saveRecipe(this.value);">Create New
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" value="update"
+                                                            onclick="saveRecipe(this.value);">Only Update
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
+                                                            onclick="refreshForm();">Refresh
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <br>
+                                            <input type="text" id="searchValue" onkeyup="getVal(this.value,this.id)"
+                                                   placeholder="Search.." autocomplete="off">
+                                            <br>
+                                            <div class="form-group row">
+                                                <div class="border border-secondary" style="width: 100%">
+                                                    <table id="myTable2" class="customDesign">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td style="display:none;">Id</td>
+                                                            <td>Sl. No</td>
+                                                            <td>Menu Name</td>
+                                                            <td>Recipe Name</td>
+                                                            <td>Rating</td>
+                                                            <td>Chef</td>
+                                                            <td>Action</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </row>
+                            </div>
+                            <!--</div>-->
+                            <!--<div class="modal-footer">-->
+                            <!--<button type="button" class="btn btn-primary" onclick="saveSales();">Save</button>-->
+                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>-->
+                            <!--</div>-->
+
+
+                        </div>
+                        <div class="row">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--        </div>-->
+            <!--      </div>-->
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <!-- Modal -->
+    <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+    <!--aria-hidden="true">-->
+    <!--<div class="modal-dialog" role="document">-->
+    <!--<div class="modal-content">-->
+    <!--<div class="modal-header">-->
+    <!--<h5 class="modal-title" id="exampleModalLabel">Add Goods</h5>-->
+    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--<span aria-hidden="true">&times;</span>-->
+    <!--</button>-->
+    <!--</div>-->
+    <!--<div class="modal-body">-->
+
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+
+</main>
+<footer>
+
+</footer>
+
+<script>
+    $('.select2').select2();
+</script>
+
+<script src="assets/js/jquery-1.12.4.min.js"></script>
+<!--<script src="assets/js/jquery-3.1.1.min.js"></script>-->
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/searchableDropdown.js"></script>
+<script src="assets/js/bignumber.js/bignumber.js"></script>
+<!--<script src="assets/js/bootstrap-datepicker.js"></script>-->
+
+
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/moment.js"></script>
+<script src="assets/js/daterangepicker.js"></script>
+<script src="assets/js/pdfmake.min.js"></script>
+<script src="assets/js/vfs_kalpurush.js"></script>
+<script src="assets/js/vfs_fonts.js"></script>
+<script src="assets/js/jquery.dataTables.js"></script>
+<script src="assets/js/dataTables.buttons.min.js"></script>
+<script src="assets/js/buttons.flash.min.js"></script>
+
+<script src="assets/js/customjs/common.js"></script>
+<script src="assets/js/customjs/recipe.js"></script>
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</body>
+
+</html>
