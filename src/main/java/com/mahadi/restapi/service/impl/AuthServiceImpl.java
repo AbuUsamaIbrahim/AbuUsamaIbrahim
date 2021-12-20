@@ -53,7 +53,6 @@ public class AuthServiceImpl implements AuthService {
         return new LoginResponseDto(token, userPrincipal.getEmail(), userPrincipal.getName(), userPrincipal.getId(), roleDtos);
     }
 
-
     @Override
     public Response logout(LoginRequestDto loginRequestDto) {
 
